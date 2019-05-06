@@ -55,10 +55,12 @@ export class BoardComponent implements OnInit {
     // initialise the board
     this.board = new godash.Board(this.dimensions);
     // add pre-exist moves
-    this.moves.forEach(move => {
-      const color = move.color.toUpperCase() === 'BLACK' ? godash.BLACK : godash.WHITE;
-      this.board = godash.addMove(this.board, new godash.Coordinate(move.x, move.y), color);
-    });
+    if (this.moves) {
+      this.moves.forEach(move => {
+        const color = move.color.toUpperCase() === 'BLACK' ? godash.BLACK : godash.WHITE;
+        this.board = godash.addMove(this.board, new godash.Coordinate(move.x, move.y), color);
+      });
+    }
   }
 
   isStar(x, y) {
