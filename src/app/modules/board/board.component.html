@@ -1,0 +1,6 @@
+<div class="board" [ngClass]="nextColor()">
+  <div class="row" *ngFor="let a of boardArray; let x = index">
+    <div class="cell" [ngClass]="cellClass(x, y)" (click)="onClick(x, y)" *ngFor="let b of boardArray; let y = index">
+    </div>
+  </div>
+</div>
