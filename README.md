@@ -5,7 +5,7 @@
 
 An Angular component that display a [Go](https://en.wikipedia.org/wiki/Go_%28game%29) board.
 
-This library depends on [godash](https://github.com/duckpunch/godash)
+This component depends on [godash](https://github.com/duckpunch/godash)
 
 ## Demo
 [Demo Page](https://shawnm0705.github.io/ng-go-board/)
