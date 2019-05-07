@@ -11,22 +11,22 @@ export class AppComponent implements OnInit {
   moves = [
     {
       x: 3,
-      y: 5,
+      y: 15,
       color: 'black'
     },
     {
-      x: 5,
-      y: 5,
+      x: 15,
+      y: 15,
       color: 'white'
     },
     {
       x: 3,
-      y: 4,
+      y: 3,
       color: 'black'
     },
     {
-      x: 4,
-      y: 5,
+      x: 15,
+      y: 3,
       color: 'white'
     }
   ];
