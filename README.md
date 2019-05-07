@@ -1,5 +1,4 @@
 # NgGoBoard
-
 [![npm version](https://badge.fury.io/js/ng-go-board.svg)](https://badge.fury.io/js/ng-go-board)
 [![Build Status](https://travis-ci.org/shawnm0705/ng-go-board.svg?branch=master)](https://travis-ci.org/shawnm0705/ng-go-board)
 
@@ -47,7 +46,7 @@ You can now use `<board>` in your html file.
 
 Board coordinate is from (0, 0) to (18, 18)
 
-`<board>` component accepts 3 properties:
+Board component accepts 3 properties:
   
 ### `moves`
 It defines pre-exists moves(stones) when initialising the board
