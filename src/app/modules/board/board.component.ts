@@ -21,6 +21,8 @@ export class BoardComponent implements OnInit {
   @Input() moves: Array<Move>;
   // the color of next move
   @Input() next: string;
+  // use one color for every move or not
+  @Input() fixColor: boolean;
   // a move event
   @Output() move = new EventEmitter<Move>();
   // board object
@@ -109,8 +111,10 @@ export class BoardComponent implements OnInit {
     this.board = godash.addMove(this.board, new godash.Coordinate(x, y), this.next);
     // trigger a move event
     this.move.emit({x: x, y: y, color: this.next});
-    // change the next move color
-    this.next = this.next === godash.BLACK ? godash.WHITE : godash.BLACK;
+    if (!this.fixColor) {
+      // change the next move color
+      this.next = this.next === godash.BLACK ? godash.WHITE : godash.BLACK;
+    }
   }
 
 }

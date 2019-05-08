@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
       color: 'white'
     }
   ];
+  next = 'black';
+  fixColor = false;
 
   ngOnInit() {
     this.movesHistory = [];
@@ -37,5 +39,19 @@ export class AppComponent implements OnInit {
 
   onMove(event) {
     this.movesHistory.push('(' + event.x + ', ' + event.y + ') ' + event.color);
+  }
+
+  normal() {
+    this.fixColor = false;
+  }
+
+  blackOnly() {
+    this.next = 'black';
+    this.fixColor = true;
+  }
+
+  whiteOnly() {
+    this.next = 'white';
+    this.fixColor = true;
   }
 }

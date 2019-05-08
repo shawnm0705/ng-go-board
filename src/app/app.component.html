@@ -1,8 +1,13 @@
 <board
 [moves]="moves"
+[next]="next"
+[fixColor]="fixColor"
 (move)=onMove($event)
 ></board>
 <h3>Moves History (0, 0) - (18, 18)</h3>
+<button (click)="normal()">Normal</button>
+<button (click)="blackOnly()">Black Only</button>
+<button (click)="whiteOnly()">White Only</button>
 <ul>
   <li *ngFor="let move of movesHistory">{{ move }}</li>
 </ul>

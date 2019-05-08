@@ -98,6 +98,22 @@ e.g.
 ></board>
 ```
 
+### `fixColor`
+It is a boolean that controls whether every move is in same color or not. 
+
+By default it is false, which means moves will be black and white in turn.
+
+It is usually used along with `next` to define the fixed color.
+
+e.g.
+
+```html
+<board
+[next]="'white'"
+[fixColor]="true"
+></board>
+```
+
 ### `move`
 It is a move event that will trigger every time when a move happens. 
 
