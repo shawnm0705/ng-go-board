@@ -1,5 +1,5 @@
 # NgGoBoard
-[![npm version](https://badge.fury.io/js/ng-go-board.svg)](https://badge.fury.io/js/ng-go-board)
+[![npm](https://img.shields.io/npm/v/ng-go-board.svg)](https://www.npmjs.com/package/ng-go-board)
 [![Build Status](https://travis-ci.org/shawnm0705/ng-go-board.svg?branch=master)](https://travis-ci.org/shawnm0705/ng-go-board)
 
 An Angular component that display a [Go](https://en.wikipedia.org/wiki/Go_%28game%29) board.
