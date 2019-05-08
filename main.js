@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<board\n[moves]=\"moves\"\n(move)=onMove($event)\n></board>\n<h3>Moves History (0, 0) - (18, 18)</h3>\n<ul>\n  <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n</ul>\n"
+module.exports = "<board\n[moves]=\"moves\"\n[next]=\"next\"\n[fixColor]=\"fixColor\"\n(move)=onMove($event)\n></board>\n<h3>Moves History (0, 0) - (18, 18)</h3>\n<button (click)=\"normal()\">Normal</button>\n<button (click)=\"blackOnly()\">Black Only</button>\n<button (click)=\"whiteOnly()\">White Only</button>\n<ul>\n  <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n</ul>\n"
 
 /***/ }),
 
@@ -87,12 +87,25 @@ var AppComponent = /** @class */ (function () {
                 color: 'white'
             }
         ];
+        this.next = 'black';
+        this.fixColor = false;
     }
     AppComponent.prototype.ngOnInit = function () {
         this.movesHistory = [];
     };
     AppComponent.prototype.onMove = function (event) {
         this.movesHistory.push('(' + event.x + ', ' + event.y + ') ' + event.color);
+    };
+    AppComponent.prototype.normal = function () {
+        this.fixColor = false;
+    };
+    AppComponent.prototype.blackOnly = function () {
+        this.next = 'black';
+        this.fixColor = true;
+    };
+    AppComponent.prototype.whiteOnly = function () {
+        this.next = 'white';
+        this.fixColor = true;
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -283,8 +296,10 @@ var BoardComponent = /** @class */ (function () {
         this.board = godash__WEBPACK_IMPORTED_MODULE_1___default.a.addMove(this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), this.next);
         // trigger a move event
         this.move.emit({ x: x, y: y, color: this.next });
-        // change the next move color
-        this.next = this.next === godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK ? godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE : godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+        if (!this.fixColor) {
+            // change the next move color
+            this.next = this.next === godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK ? godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE : godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+        }
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -302,6 +317,10 @@ var BoardComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], BoardComponent.prototype, "next", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], BoardComponent.prototype, "fixColor", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
