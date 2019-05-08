@@ -12,9 +12,6 @@ This component depends on [godash](https://github.com/duckpunch/godash)
 ![Go](https://shawnm0705.github.io/ng-go-board/assets/go.png)
 
 ## Getting Started
-Install `godash` via npm.
-
-    npm install godash
 
 Install `ng-go-board` via npm.
 
