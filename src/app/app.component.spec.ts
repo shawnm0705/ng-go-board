@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { BoardModule } from './modules/board/board.module';
+import { MatGridListModule, MatButtonModule } from '@angular/material';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -8,7 +9,9 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        BoardModule
+        BoardModule,
+        MatGridListModule,
+        MatButtonModule
       ]
     }).compileComponents();
   }));
