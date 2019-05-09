@@ -48,9 +48,9 @@ Board component accepts 3 properties:
 ### `moves`
 
 **Atrribute** | `moves`
+--- | ---
 **Type** | `Array<{ x: number; y: number; color: string; }>`
 **Description** | It defines pre-exists moves(stones) when initialising the board
-
 
 e.g. 
 ```html
