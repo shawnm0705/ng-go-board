@@ -30,7 +30,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"
+module.exports = "::ng-deep mat-grid-tile .mat-figure {\n  display: block !important;\n}\nbutton {\n  margin-right: 5px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSx5QkFBeUI7QUFDM0I7QUFDQTtFQUNFLGlCQUFpQjtBQUNuQiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiOjpuZy1kZWVwIG1hdC1ncmlkLXRpbGUgLm1hdC1maWd1cmUge1xuICBkaXNwbGF5OiBibG9jayAhaW1wb3J0YW50O1xufVxuYnV0dG9uIHtcbiAgbWFyZ2luLXJpZ2h0OiA1cHg7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -41,7 +41,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<board\n[moves]=\"moves\"\n[next]=\"next\"\n[fixColor]=\"fixColor\"\n(move)=onMove($event)\n></board>\n<h3>Moves History (0, 0) - (18, 18)</h3>\n<button (click)=\"normal()\">Normal</button>\n<button (click)=\"blackOnly()\">Black Only</button>\n<button (click)=\"whiteOnly()\">White Only</button>\n<ul>\n  <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n</ul>\n"
+module.exports = "<mat-grid-list cols=\"2\">\n  <mat-grid-tile>\n    <board #board\n    [moves]=\"moves\"\n    [next]=\"next\"\n    (move)=onMove($event)\n    ></board>\n  </mat-grid-tile>\n\n  <mat-grid-tile>\n    <h3>Actions</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.reset()\">Reset</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.retract(); retract()\">Retract</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.disable()\">Disable</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.enable()\">Enable</button>\n    </div>\n    <h3>Stone color</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.normalColor()\">Normal</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('black')\">Black Only</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('white')\">White Only</button>\n    </div>\n    <h3>Moves History (0, 0) - (18, 18)</h3>\n    <ul>\n      <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n    </ul>\n  </mat-grid-tile>\n</mat-grid-list>\n"
 
 /***/ }),
 
@@ -96,16 +96,8 @@ var AppComponent = /** @class */ (function () {
     AppComponent.prototype.onMove = function (event) {
         this.movesHistory.push('(' + event.x + ', ' + event.y + ') ' + event.color);
     };
-    AppComponent.prototype.normal = function () {
-        this.fixColor = false;
-    };
-    AppComponent.prototype.blackOnly = function () {
-        this.next = 'black';
-        this.fixColor = true;
-    };
-    AppComponent.prototype.whiteOnly = function () {
-        this.next = 'white';
-        this.fixColor = true;
+    AppComponent.prototype.retract = function () {
+        this.movesHistory.pop();
     };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -135,12 +127,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _modules_board_board_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/board/board.module */ "./src/app/modules/board/board.module.ts");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -155,7 +149,9 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _modules_board_board_module__WEBPACK_IMPORTED_MODULE_3__["BoardModule"]
+                _modules_board_board_module__WEBPACK_IMPORTED_MODULE_3__["BoardModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatGridListModule"],
+                _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButtonModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -218,29 +214,45 @@ var BoardComponent = /** @class */ (function () {
     function BoardComponent() {
         // a move event
         this.move = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        // prevent click event
+        this.disabled = false;
     }
     BoardComponent.prototype.ngOnInit = function () {
-        var _this = this;
         if (!this.dimensions) {
             // default go board settings
             this.dimensions = 19;
             this.stars = [{ x: 3, y: 3 }, { x: 3, y: 9 }, { x: 3, y: 15 }, { x: 9, y: 3 }, { x: 9, y: 9 }, { x: 9, y: 15 }, { x: 15, y: 3 }, { x: 15, y: 9 }, { x: 15, y: 15 }];
         }
         this.boardArray = Array(this.dimensions).fill(1);
+        this.reset();
+    };
+    /************
+      Functions that can be triggered from parent component
+    ************/
+    /**
+     * Reset the board
+     * @param forRetract If this is for retract
+     */
+    BoardComponent.prototype.reset = function (forRetract) {
+        var _this = this;
+        if (forRetract === void 0) { forRetract = false; }
         // initialise the next color
-        if (!this.next) {
+        if (this.next) {
+            this.color = this.next;
+        }
+        else {
             if (this.moves) {
                 switch (this.moves[this.moves.length - 1].color.toUpperCase()) {
                     case 'BLACK':
-                        this.next = godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE;
+                        this.color = godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE;
                         break;
                     case 'WHITE':
-                        this.next = godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+                        this.color = godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
                         break;
                 }
             }
             else {
-                this.next = godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+                this.color = godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
             }
         }
         // initialise the board
@@ -252,14 +264,60 @@ var BoardComponent = /** @class */ (function () {
                 _this.board = godash__WEBPACK_IMPORTED_MODULE_1___default.a.addMove(_this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(move.x, move.y), color);
             });
         }
+        if (!forRetract) {
+            this.movesHistory = [];
+        }
     };
+    /**
+     * Use only one color for every move
+     * @param color The color of moves
+     */
+    BoardComponent.prototype.oneColor = function (color) {
+        this.fixColor = true;
+        this.color = color === 'white' ? godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE : godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+    };
+    /**
+     * Use normal color change rule
+     */
+    BoardComponent.prototype.normalColor = function () {
+        this.fixColor = false;
+    };
+    /**
+     * Retract back one move
+     */
+    BoardComponent.prototype.retract = function () {
+        var _this = this;
+        this.reset(true);
+        this.movesHistory.pop();
+        if (this.movesHistory) {
+            this.movesHistory.forEach(function (move) {
+                _this.board = godash__WEBPACK_IMPORTED_MODULE_1___default.a.addMove(_this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(move.x, move.y), move.color);
+            });
+            this.color = godash__WEBPACK_IMPORTED_MODULE_1___default.a.oppositeColor(this.movesHistory[this.movesHistory.length - 1].color);
+        }
+    };
+    /**
+     * Not allow clicking
+     */
+    BoardComponent.prototype.disable = function () {
+        this.disabled = true;
+    };
+    /**
+     * Allow clicking
+     */
+    BoardComponent.prototype.enable = function () {
+        this.disabled = false;
+    };
+    /************
+      Functions that are used inside this component only
+    ************/
     BoardComponent.prototype.isStar = function (x, y) {
         return this.stars.find(function (star) {
             return star.x === x && star.y === y;
         }) !== undefined;
     };
     BoardComponent.prototype.nextColor = function () {
-        if (this.next === godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK) {
+        if (this.color === godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK) {
             return 'black';
         }
         return 'white';
@@ -286,19 +344,23 @@ var BoardComponent = /** @class */ (function () {
         return c;
     };
     BoardComponent.prototype.onClick = function (x, y) {
-        if (!godash__WEBPACK_IMPORTED_MODULE_1___default.a.isLegalMove(this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), this.next)) {
+        if (this.disabled) {
+            return;
+        }
+        if (!godash__WEBPACK_IMPORTED_MODULE_1___default.a.isLegalMove(this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), this.color)) {
             return;
         }
         // this coordinate already has stone
         if (this.board.moves.get(new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), godash__WEBPACK_IMPORTED_MODULE_1___default.a.EMPTY) !== godash__WEBPACK_IMPORTED_MODULE_1___default.a.EMPTY) {
             return;
         }
-        this.board = godash__WEBPACK_IMPORTED_MODULE_1___default.a.addMove(this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), this.next);
+        this.board = godash__WEBPACK_IMPORTED_MODULE_1___default.a.addMove(this.board, new godash__WEBPACK_IMPORTED_MODULE_1___default.a.Coordinate(x, y), this.color);
         // trigger a move event
-        this.move.emit({ x: x, y: y, color: this.next });
+        this.move.emit({ x: x, y: y, color: this.color });
+        this.movesHistory.push({ x: x, y: y, color: this.color });
         if (!this.fixColor) {
             // change the next move color
-            this.next = this.next === godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK ? godash__WEBPACK_IMPORTED_MODULE_1___default.a.WHITE : godash__WEBPACK_IMPORTED_MODULE_1___default.a.BLACK;
+            this.color = godash__WEBPACK_IMPORTED_MODULE_1___default.a.oppositeColor(this.color);
         }
     };
     __decorate([
@@ -317,10 +379,6 @@ var BoardComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", String)
     ], BoardComponent.prototype, "next", void 0);
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", Boolean)
-    ], BoardComponent.prototype, "fixColor", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"])(),
         __metadata("design:type", Object)
