@@ -8,7 +8,7 @@ export interface Move {
 }
 
 @Component({
-  selector: 'board',
+  selector: 'go-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss']
 })

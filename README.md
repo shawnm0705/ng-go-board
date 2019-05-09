@@ -35,9 +35,9 @@ import { BoardModule } from 'ng-go-board';
 export class AppModule { }
 ```
 
-You can now use `<board>` in your html file.
+You can now use `<go-board>` in your html file.
 
-`<board></board>`
+`<go-board></go-board>`
 
 ## Properties
 
@@ -53,7 +53,7 @@ It defines pre-exists moves(stones) when initialising the board
 
 #### Example
 ```html
-<board
+<go-board
   [moves]="[
     {
       x: 3,
@@ -76,7 +76,7 @@ It defines pre-exists moves(stones) when initialising the board
       color: 'white'
     }
   ]"
-></board>
+></go-board>
 ```
 
 ### `next`
@@ -95,9 +95,9 @@ If no `next` and no `moves` provided, the next color will be black by default.
 
 #### Example
 ```html
-<board
+<go-board
 [next]="'black'"
-></board>
+></go-board>
 ```
 
 ## Methods
@@ -131,9 +131,9 @@ The `event` is in type `{ x: number; y: number; color: string; }`
 e.g.
 
 ```html
-<board
+<go-board
 (move)=onMove($event)
-></board>
+></go-board>
 ```
 In `app.component.ts`
 ```javascript

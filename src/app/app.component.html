@@ -1,10 +1,10 @@
 <mat-grid-list cols="2">
   <mat-grid-tile>
-    <board #board
+    <go-board #board
     [moves]="moves"
     [next]="next"
     (move)=onMove($event)
-    ></board>
+    ></go-board>
   </mat-grid-tile>
 
   <mat-grid-tile>
