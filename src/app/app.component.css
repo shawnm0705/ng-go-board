@@ -1,0 +1,6 @@
+::ng-deep mat-grid-tile .mat-figure {
+  display: block !important;
+}
+button {
+  margin-right: 5px;
+}

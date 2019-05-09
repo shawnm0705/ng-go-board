@@ -46,9 +46,12 @@ Board coordinate is from (0, 0) to (18, 18)
 Board component accepts 3 properties:
   
 ### `moves`
-It defines pre-exists moves(stones) when initialising the board
 
-It is an array of `{ x: number; y: number; color: string; }`
+**Atrribute** | `moves`
+--- | ---
+**Type** | `Array<{ x: number; y: number; color: string; }>`
+**Description** | It defines pre-exists moves(stones) when initialising the board
+
 
 e.g. 
 ```html

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BoardModule } from './modules/board/board.module';
+import { MatGridListModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,9 @@ import { BoardModule } from './modules/board/board.module';
   ],
   imports: [
     BrowserModule,
-    BoardModule
+    BoardModule,
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

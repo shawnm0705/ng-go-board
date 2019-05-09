@@ -41,17 +41,7 @@ export class AppComponent implements OnInit {
     this.movesHistory.push('(' + event.x + ', ' + event.y + ') ' + event.color);
   }
 
-  normal() {
-    this.fixColor = false;
-  }
-
-  blackOnly() {
-    this.next = 'black';
-    this.fixColor = true;
-  }
-
-  whiteOnly() {
-    this.next = 'white';
-    this.fixColor = true;
+  retract() {
+    this.movesHistory.pop();
   }
 }

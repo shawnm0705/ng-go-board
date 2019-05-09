@@ -1,13 +1,29 @@
-<board
-[moves]="moves"
-[next]="next"
-[fixColor]="fixColor"
-(move)=onMove($event)
-></board>
-<h3>Moves History (0, 0) - (18, 18)</h3>
-<button (click)="normal()">Normal</button>
-<button (click)="blackOnly()">Black Only</button>
-<button (click)="whiteOnly()">White Only</button>
-<ul>
-  <li *ngFor="let move of movesHistory">{{ move }}</li>
-</ul>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <board #board
+    [moves]="moves"
+    [next]="next"
+    (move)=onMove($event)
+    ></board>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <h3>Actions</h3>
+    <div>
+      <button mat-raised-button color="primary" (click)="board.reset()">Reset</button>
+      <button mat-raised-button color="primary" (click)="board.retract(); retract()">Retract</button>
+      <button mat-raised-button color="primary" (click)="board.disable()">Disable</button>
+      <button mat-raised-button color="primary" (click)="board.enable()">Enable</button>
+    </div>
+    <h3>Stone color</h3>
+    <div>
+      <button mat-raised-button color="primary" (click)="board.normalColor()">Normal</button>
+      <button mat-raised-button color="primary" (click)="board.oneColor('black')">Black Only</button>
+      <button mat-raised-button color="primary" (click)="board.oneColor('white')">White Only</button>
+    </div>
+    <h3>Moves History (0, 0) - (18, 18)</h3>
+    <ul>
+      <li *ngFor="let move of movesHistory">{{ move }}</li>
+    </ul>
+  </mat-grid-tile>
+</mat-grid-list>
