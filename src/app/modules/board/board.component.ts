@@ -5,6 +5,7 @@ export interface Move {
   x: number;
   y: number;
   color?: string;
+  step?: number;
 }
 
 @Component({
@@ -21,6 +22,8 @@ export class BoardComponent implements OnInit {
   @Input() moves: Array<Move>;
   // the color of next move (passed from parent)
   @Input() next: string;
+  // whether display the step number on stone or not
+  @Input() showStep: boolean;
   // a move event
   @Output() move = new EventEmitter<Move>();
   // board object
@@ -33,8 +36,10 @@ export class BoardComponent implements OnInit {
   fixColor: boolean;
   // move history array
   movesHistory: Array<Move>;
-  // prevent click event
+  // prevent click event or not
   disabled = false;
+  // steps array
+  steps: Array<Move>;
 
   constructor() { }
 
@@ -85,6 +90,7 @@ export class BoardComponent implements OnInit {
     }
     if (!forRetract) {
       this.movesHistory = [];
+      this.steps = [];
     }
   }
 
@@ -102,6 +108,7 @@ export class BoardComponent implements OnInit {
    */
   normalColor() {
     this.fixColor = false;
+    this.color = godash.oppositeColor(this.color);
   }
 
   /**
@@ -109,13 +116,22 @@ export class BoardComponent implements OnInit {
    */
   retract() {
     this.reset(true);
-    this.movesHistory.pop();
-    if (this.movesHistory) {
-      this.movesHistory.forEach(move => {
+    if (!this.movesHistory.length) {
+      return;
+    }
+    const lastMove = this.movesHistory.pop();
+    // pop steps list if it is the same with the last move from moves history
+    if (this.steps.length && lastMove.x === this.steps[this.steps.length - 1].x && lastMove.y === this.steps[this.steps.length - 1].y) {
+      this.steps.pop();
+    }
+    // add moves from moves history
+    if (this.movesHistory.length) {
+      this.movesHistory.forEach((move, i) => {
         this.board = godash.addMove(this.board, new godash.Coordinate(move.x, move.y), move.color);
       });
-      this.color = godash.oppositeColor(this.movesHistory[this.movesHistory.length - 1].color);
     }
+    // set the next color to the color of last move
+    this.color = lastMove.color;
   }
 
   /**
@@ -136,12 +152,19 @@ export class BoardComponent implements OnInit {
     Functions that are used inside this component only
   ************/
 
-  isStar(x, y) {
+  /**
+   * Check if this coordinate is a star
+   * @return boolean
+   */
+  isStar(x: number, y: number) {
     return this.stars.find(star => {
       return star.x === x && star.y === y;
     }) !== undefined;
   }
 
+  /**
+   * Next color
+   */
   nextColor() {
     if (this.color === godash.BLACK) {
       return 'black';
@@ -151,8 +174,6 @@ export class BoardComponent implements OnInit {
 
   /**
    * Get the cell classes
-   * @param x Coordinate x
-   * @param y Coordinate y
    * @return class string
    */
   cellClass(x: number, y: number) {
@@ -171,7 +192,24 @@ export class BoardComponent implements OnInit {
     return c;
   }
 
-  onClick(x, y) {
+  /**
+   * Get the step text for a coordinate
+   * @return step number | ''
+   */
+  getStep(x: number, y: number) {
+    const step = this.steps.find(s => {
+      return s.x === x && s.y === y;
+    })
+    if (step) {
+      return step.step;
+    }
+    return '';
+  }
+
+  /**
+   * On click event
+   */
+  onClick(x: number, y: number) {
     if (this.disabled) {
       return ;
     }
@@ -186,6 +224,13 @@ export class BoardComponent implements OnInit {
     // trigger a move event
     this.move.emit({x: x, y: y, color: this.color});
     this.movesHistory.push({x: x, y: y, color: this.color});
+    if (this.showStep) {
+      this.steps.push({
+        x: x,
+        y: y,
+        step: this.steps.length + 1
+      });
+    }
     if (!this.fixColor) {
       // change the next move color
       this.color = godash.oppositeColor(this.color);

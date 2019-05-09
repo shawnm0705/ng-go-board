@@ -4,16 +4,18 @@
     [moves]="moves"
     [next]="next"
     (move)=onMove($event)
+    [showStep]="showStep"
     ></go-board>
   </mat-grid-tile>
 
   <mat-grid-tile>
     <h3>Actions</h3>
     <div>
-      <button mat-raised-button color="primary" (click)="board.reset()">Reset</button>
+      <button mat-raised-button color="primary" (click)="board.reset(); reset()">Reset</button>
       <button mat-raised-button color="primary" (click)="board.retract(); retract()">Retract</button>
       <button mat-raised-button color="primary" (click)="board.disable()">Disable</button>
       <button mat-raised-button color="primary" (click)="board.enable()">Enable</button>
+      <button mat-raised-button color="primary" (click)="showStep = !showStep">Toggle Step</button>
     </div>
     <h3>Stone color</h3>
     <div>

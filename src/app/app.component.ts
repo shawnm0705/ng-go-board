@@ -31,14 +31,18 @@ export class AppComponent implements OnInit {
     }
   ];
   next = 'black';
-  fixColor = false;
+  showStep = false;
 
   ngOnInit() {
-    this.movesHistory = [];
+    this.reset();
   }
 
   onMove(event) {
     this.movesHistory.push('(' + event.x + ', ' + event.y + ') ' + event.color);
+  }
+
+  reset() {
+    this.movesHistory = [];
   }
 
   retract() {

@@ -100,6 +100,24 @@ If no `next` and no `moves` provided, the next color will be black by default.
 ></go-board>
 ```
 
+### `showStep`
+
+#### Type
+Boolean
+Default is false
+
+#### Description
+It defines whether display step number on the stone or not. 
+
+When `showStep` changed, it will only affact future stones. Existing stones will remain the same.
+
+#### Example
+```html
+<go-board
+[showStep]="true"
+></go-board>
+```
+
 ## Methods
 
 ### `reset()`
