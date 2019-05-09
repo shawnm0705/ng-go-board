@@ -45,12 +45,12 @@ Board coordinate is from (0, 0) to (18, 18)
   
 ### `moves`
 
-**Atrribute** | `moves`
-:---: | ---
-**Type** | Array<{ x: number; y: number; color: string; }>
-**Description** | It defines pre-exists moves(stones) when initialising the board
+####Type
+Array<{ x: number; y: number; color: string; }>
+####Description
+It defines pre-exists moves(stones) when initialising the board
 
-e.g. 
+####Example
 ```html
 <board
   [moves]="[
@@ -79,42 +79,50 @@ e.g.
 ```
 
 ### `next`
-It defines the color of stone for the next move.
 
+####Type
+String
+####Description
 Valid colors are `black` and `white`
 
 If no `next` provided, it will check the last move(stone) in `moves` array. If it is white, the next color will be black, otherwise the next color will be white.
 
 If no `next` and no `moves` provided, the next color will be black by default.
 
-e.g.
-
+####Example
 ```html
 <board
 [next]="'black'"
 ></board>
 ```
 
-### `fixColor`
-It is a boolean that controls whether every move is in same color or not. 
+## Methods
 
-By default it is false, which means moves will be black and white in turn.
+### `reset()`
+Reset the board to the initial state
 
-It is usually used along with `next` to define the fixed color.
+### `retract()`
+Retract the last move
 
-e.g.
+### `disable()`
+Disable the board, do not allow any moves
 
-```html
-<board
-[next]="'white'"
-[fixColor]="true"
-></board>
-```
+### `enable()`
+Enable the board, allow moves
+
+### `normalColor()`
+Stone color will switch between black and white in turn
+
+### `oneColor(color:string)`
+Stone color will be fixed to the color passed in. Valid color: `black`, `white`
+
+
+## Events
 
 ### `move`
 It is a move event that will trigger every time when a move happens. 
 
-The `$event` is in type `{ x: number; y: number; color: string; }`
+The `event` is in type `{ x: number; y: number; color: string; }`
 
 e.g.
 
