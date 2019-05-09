@@ -104,7 +104,8 @@ If no `next` and no `moves` provided, the next color will be black by default.
 
 #### Type
 Boolean
-Default is false
+
+Default is `false`
 
 #### Description
 It defines whether display step number on the stone or not. 
