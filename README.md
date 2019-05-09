@@ -83,7 +83,10 @@ It defines pre-exists moves(stones) when initialising the board
 
 #### Type
 String
+
 #### Description
+It defines the color of stone for the next move.
+
 Valid colors are `black` and `white`
 
 If no `next` provided, it will check the last move(stone) in `moves` array. If it is white, the next color will be black, otherwise the next color will be white.
