@@ -41,7 +41,7 @@ module.exports = "::ng-deep mat-grid-tile .mat-figure {\n  display: block !impor
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-grid-list cols=\"2\">\n  <mat-grid-tile>\n    <go-board #board\n    [moves]=\"moves\"\n    [next]=\"next\"\n    (move)=onMove($event)\n    [showStep]=\"showStep\"\n    ></go-board>\n  </mat-grid-tile>\n\n  <mat-grid-tile>\n    <h3>Actions</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.reset(); reset()\">Reset</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.retract(); retract()\">Retract</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.disable()\">Disable</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.enable()\">Enable</button>\n      <button mat-raised-button color=\"primary\" (click)=\"showStep = !showStep\">Toggle Step</button>\n    </div>\n    <h3>Stone color</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.normalColor()\">Normal</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('black')\">Black Only</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('white')\">White Only</button>\n    </div>\n    <h3>Moves History (0, 0) - (18, 18)</h3>\n    <ul>\n      <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n    </ul>\n  </mat-grid-tile>\n</mat-grid-list>\n"
+module.exports = "<mat-grid-list cols=\"2\">\n  <mat-grid-tile>\n    <go-board #board\n    [moves]=\"moves\"\n    [next]=\"next\"\n    (move)=onMove($event)\n    [showStep]=\"showStep\"\n    ></go-board>\n  </mat-grid-tile>\n\n  <mat-grid-tile>\n    <h3>Actions</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.reset(); reset()\">Reset</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.retract(); retract()\">Retract</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.disable()\">Disable</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.enable()\">Enable</button>\n      <button mat-raised-button color=\"primary\" (click)=\"showStep = !showStep\">Toggle Step</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.addMove(9, 9)\">Add to (9, 9)</button>\n    </div>\n    <h3>Stone color</h3>\n    <div>\n      <button mat-raised-button color=\"primary\" (click)=\"board.normalColor()\">Normal</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('black')\">Black Only</button>\n      <button mat-raised-button color=\"primary\" (click)=\"board.oneColor('white')\">White Only</button>\n    </div>\n    <h3>Moves History (0, 0) - (18, 18)</h3>\n    <ul>\n      <li *ngFor=\"let move of movesHistory\">{{ move }}</li>\n    </ul>\n  </mat-grid-tile>\n</mat-grid-list>\n"
 
 /***/ }),
 
@@ -232,6 +232,12 @@ var BoardComponent = /** @class */ (function () {
     /************
       Functions that can be triggered from parent component
     ************/
+    /**
+     * Add move
+     */
+    BoardComponent.prototype.addMove = function (x, y) {
+        this.onClick(x, y);
+    };
     /**
      * Reset the board
      * @param forRetract If this is for retract
