@@ -206,7 +206,7 @@ export class BoardComponent implements OnInit {
   getStep(x: number, y: number) {
     const step = this.steps.slice().reverse().find(s => {
       return s.x === x && s.y === y;
-    })
+    });
     if (step) {
       return step.step;
     }
