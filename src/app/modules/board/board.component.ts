@@ -58,6 +58,13 @@ export class BoardComponent implements OnInit {
   ************/
 
   /**
+   * Add move
+   */
+  addMove(x: number, y: number) {
+    this.onClick(x, y);
+  }
+
+  /**
    * Reset the board
    * @param forRetract If this is for retract
    */

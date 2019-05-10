@@ -127,6 +127,9 @@ Reset the board to the initial state
 ### `retract()`
 Retract the last move
 
+### `addMove(x, y)`
+Add a move to (x, y) with the current color. Same as when you click on this coordinate
+
 ### `disable()`
 Disable the board, do not allow any moves
 
