@@ -24,6 +24,8 @@ export class BoardComponent implements OnInit {
   @Input() next: string;
   // whether display the step number on stone or not
   @Input() showStep: boolean;
+  // prevent click event or not
+  @Input() disabled = false;
   // a move event
   @Output() move = new EventEmitter<Move>();
   // board object
@@ -36,8 +38,6 @@ export class BoardComponent implements OnInit {
   fixColor: boolean;
   // move history array
   movesHistory: Array<Move>;
-  // prevent click event or not
-  disabled = false;
   // steps array
   steps: Array<Move>;
 

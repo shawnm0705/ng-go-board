@@ -54,7 +54,7 @@ It defines pre-exists moves(stones) when initialising the board
 #### Example
 ```html
 <go-board
-  [moves]="[
+  moves="[
     {
       x: 3,
       y: 15,
@@ -96,7 +96,7 @@ If no `next` and no `moves` provided, the next color will be black by default.
 #### Example
 ```html
 <go-board
-[next]="'black'"
+  next="'black'"
 ></go-board>
 ```
 
@@ -115,7 +115,24 @@ When `showStep` changed, it will only affact future stones. Existing stones will
 #### Example
 ```html
 <go-board
-[showStep]="true"
+  showStep="true"
+></go-board>
+```
+
+### `disabled`
+
+#### Type
+Boolean
+
+Default is `false`
+
+#### Description
+It defines whether allow user click on the board to move or not. 
+
+#### Example
+```html
+<go-board
+  disabled="true"
 ></go-board>
 ```
 
@@ -154,7 +171,7 @@ e.g.
 
 ```html
 <go-board
-(move)=onMove($event)
+  (move)=onMove($event)
 ></go-board>
 ```
 In `app.component.ts`
