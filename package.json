@@ -1,9 +1,9 @@
 {
   "name": "ng-go-board",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port=4100",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
