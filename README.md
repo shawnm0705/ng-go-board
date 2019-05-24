@@ -138,14 +138,28 @@ It defines whether allow user click on the board to move or not.
 
 ## Methods
 
+Methods can be used from `BoardService`
+
+```
+import { BoardService } from 'ng-go-board';
+...
+constructor(
+  private board: BoardService
+) { }
+...
+test() {
+  board.reset()
+}
+```
+
 ### `reset()`
 Reset the board to the initial state
 
 ### `retract()`
 Retract the last move
 
-### `addMove(x, y)`
-Add a move to (x, y) with the current color. Same as when you click on this coordinate
+### `addMove(x, y, color?)`
+Add a move to (x, y) with the current color or the color passed in. Same as when you click on this coordinate. color is optional
 
 ### `disable()`
 Disable the board, do not allow any moves

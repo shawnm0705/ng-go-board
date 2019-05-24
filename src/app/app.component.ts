@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BoardService } from './modules/board/board.service';
 import godash from 'godash';
 
 @Component({
@@ -32,6 +33,10 @@ export class AppComponent implements OnInit {
   ];
   next = 'black';
   showStep = false;
+
+  constructor(
+    public board: BoardService
+  ) { }
 
   ngOnInit() {
     this.reset();

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { BoardService, Board } from './board.service';
 import godash from 'godash';
 
 export interface Move {
@@ -41,7 +42,9 @@ export class BoardComponent implements OnInit {
   // steps array
   steps: Array<Move>;
 
-  constructor() { }
+  constructor(
+    private boardService: BoardService
+  ) { }
 
   ngOnInit() {
     if (!this.dimensions) {
@@ -51,16 +54,44 @@ export class BoardComponent implements OnInit {
     }
     this.boardArray = Array(this.dimensions).fill(1);
     this.reset();
+    this.boardService.getBoard().subscribe((board: Board) => {
+      switch (board.action) {
+        case 'reset':
+          this.reset();
+          break;
+        case 'retract':
+          this.retract();
+          break;
+        case 'disable':
+          this.disable();
+          break;
+        case 'enable':
+          this.enable();
+          break;
+        case 'normalColor':
+          this.normalColor();
+          break;
+        case 'oneColor':
+          this.oneColor(board.data.color);
+          break;
+        case 'addMove':
+          this.addMove(board.data.x, board.data.y, board.data.color);
+          break;
+      }
+    });
   }
 
   /************
-    Functions that can be triggered from parent component
+    Functions that can be triggered from service
   ************/
 
   /**
    * Add move
    */
-  addMove(x: number, y: number) {
+  addMove(x: number, y: number, color = null) {
+    if (color) {
+      this.color = color;
+    }
     this.onClick(x, y);
   }
 
@@ -73,7 +104,7 @@ export class BoardComponent implements OnInit {
     if (this.next) {
       this.color = this.next;
     } else {
-      if (this.moves) {
+      if (this.moves.length) {
         switch (this.moves[this.moves.length - 1].color.toUpperCase()) {
           case 'BLACK':
             this.color = godash.WHITE;
