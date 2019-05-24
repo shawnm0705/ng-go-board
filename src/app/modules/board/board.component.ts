@@ -104,7 +104,7 @@ export class BoardComponent implements OnInit {
     if (this.next) {
       this.color = this.next;
     } else {
-      if (this.moves.length) {
+      if (this.moves && this.moves.length) {
         switch (this.moves[this.moves.length - 1].color.toUpperCase()) {
           case 'BLACK':
             this.color = godash.WHITE;
