@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { BoardModule } from './modules/board/board.module';
+import { BoardModule } from 'ng-go-board';
 import { MatGridListModule, MatButtonModule } from '@angular/material';
 describe('AppComponent', () => {
   beforeEach(async(() => {

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { BoardModule } from './modules/board/board.module';
+import { BoardModule, BoardService } from 'ng-go-board';
 import { MatGridListModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { MatGridListModule, MatButtonModule } from '@angular/material';
     MatGridListModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [BoardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

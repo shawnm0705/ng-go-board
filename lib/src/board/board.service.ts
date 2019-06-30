@@ -6,9 +6,7 @@ export interface Board {
   data?: any;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class BoardService {
   private subject = new Subject<Board>();
 

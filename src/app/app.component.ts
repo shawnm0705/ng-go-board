@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardService } from './modules/board/board.service';
+import { BoardService } from 'ng-go-board';
 import godash from 'godash';
 
 @Component({

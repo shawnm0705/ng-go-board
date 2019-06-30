@@ -16,7 +16,7 @@ This component depends on [godash](https://github.com/duckpunch/godash)
 Install `godash` via npm.
 
     npm install godash
-    
+
 Install `ng-go-board` via npm.
 
     npm install ng-go-board

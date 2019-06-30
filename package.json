@@ -1,6 +1,6 @@
 {
-  "name": "ng-go-board",
-  "version": "0.6.4",
+  "name": "ng-go-board-demo",
+  "version": "0.6.6",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4100",
@@ -8,9 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json",
+    "packagr": "ng-packagr -p lib/package.json",
     "deploy": "ng build --base-href '/ng-go-board/' && npx angular-cli-ghpages --dir=www",
-    "publish": "npm publish dist"
+    "publish": "npm publish lib/dist"
   },
   "private": false,
   "dependencies": {
@@ -27,6 +27,7 @@
     "@angular/router": "^7.2.14",
     "core-js": "^2.5.4",
     "godash": "^1.4.5",
+    "ng-go-board": "file:lib/dist",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
